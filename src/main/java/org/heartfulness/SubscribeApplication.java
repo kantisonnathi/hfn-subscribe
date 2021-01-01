@@ -1,0 +1,14 @@
+package org.heartfulness;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+public class SubscribeApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SubscribeApplication.class, args);
+    }
+
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe</title>
+</head>
+<body>
+
+
+<p>Only enter your details if you are willing to receive notifications through them - if you do not wish to receive
+email notifications then please do not enter your email</p>
+
+<form th:object="${user}"
+      method="post">
+    <input type="text" id="name" th:field="*{name}" placeholder="Name"/>
+    <br>
+    <br>
+    <input type="email" id="email" th:field="*{email}" placeholder="Email">
+    <br>
+    <br>
+    <input type="text" id="sms_number" th:field="*{smsNumber}" placeholder="SMS Number">
+    <br>
+    <br>
+    <input type="text" id="whatsapp_number" th:field="*{whatsappNumber}" placeholder="Whatsapp Number">
+    <br>
+    <br>
+    <label for="whispers">Receive whispers from the brighter world</label>
+    <input type="checkbox" th:field="*{whispers}" id="whispers">
+    <br>
+    <label for="obt">Receive OBT</label>
+    <input type="checkbox" th:field="*{OBT}" id="obt">
+    <br>
+    <label for="weekly">Receive weekly inspiration</label>
+    <input type="checkbox" th:field="*{weekly}" id="weekly">
+
+    <br>
+    <br>
+    <input type="submit">
+
+</form>
+
+</body>
+</html>
