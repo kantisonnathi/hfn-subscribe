@@ -17,14 +17,106 @@ public class User extends NamedEntity {
     @Column(name = "whatsapp_number")
     private String whatsappNumber;
 
-    @Column(name = "whispers")
-    private boolean whispers;
+    @Column(name = "whispers_email")
+    private boolean whispersEmail;
 
-    @Column(name = "OBT")
-    private boolean OBT;
+    @Column(name = "whispers_whatsapp")
+    private boolean whispersWhatsapp;
 
-    @Column(name = "weekly")
-    private boolean weekly;
+    @Column(name = "whispers_sms")
+    private boolean whispersSMS;
+
+
+    @Column(name = "obt_email")
+    private boolean OBTEmail;
+
+    @Column(name = "obt_whatsapp")
+    private boolean OBTWhatsapp;
+
+    public boolean isWhispersEmail() {
+        return whispersEmail;
+    }
+
+    public void setWhispersEmail(boolean whispersEmail) {
+        this.whispersEmail = whispersEmail;
+    }
+
+    public boolean isWhispersWhatsapp() {
+        return whispersWhatsapp;
+    }
+
+    public void setWhispersWhatsapp(boolean whispersWhatsapp) {
+        this.whispersWhatsapp = whispersWhatsapp;
+    }
+
+    public boolean isWhispersSMS() {
+        return whispersSMS;
+    }
+
+    public void setWhispersSMS(boolean whispersSMS) {
+        this.whispersSMS = whispersSMS;
+    }
+
+    public boolean isOBTEmail() {
+        return OBTEmail;
+    }
+
+    public void setOBTEmail(boolean OBTEmail) {
+        this.OBTEmail = OBTEmail;
+    }
+
+    public boolean isOBTWhatsapp() {
+        return OBTWhatsapp;
+    }
+
+    public void setOBTWhatsapp(boolean OBTWhatsapp) {
+        this.OBTWhatsapp = OBTWhatsapp;
+    }
+
+    public boolean isOBTSMS() {
+        return OBTSMS;
+    }
+
+    public void setOBTSMS(boolean OBTSMS) {
+        this.OBTSMS = OBTSMS;
+    }
+
+    public boolean isWeeklyEmail() {
+        return weeklyEmail;
+    }
+
+    public void setWeeklyEmail(boolean weeklyEmail) {
+        this.weeklyEmail = weeklyEmail;
+    }
+
+    public boolean isWeeklyWhatsapp() {
+        return weeklyWhatsapp;
+    }
+
+    public void setWeeklyWhatsapp(boolean weeklyWhatsapp) {
+        this.weeklyWhatsapp = weeklyWhatsapp;
+    }
+
+    public boolean isWeeklySMS() {
+        return weeklySMS;
+    }
+
+    public void setWeeklySMS(boolean weeklySMS) {
+        this.weeklySMS = weeklySMS;
+    }
+
+    @Column(name = "obt_sms")
+    private boolean OBTSMS;
+
+
+    @Column(name = "weekly_email")
+    private boolean weeklyEmail;
+
+    @Column(name = "weekly_whatsapp")
+    private boolean weeklyWhatsapp;
+
+    @Column(name = "weekly_sms")
+    private boolean weeklySMS;
 
 
     public String getEmail() {
@@ -51,27 +143,4 @@ public class User extends NamedEntity {
         this.whatsappNumber = whatsappNumber;
     }
 
-    public boolean isWhispers() {
-        return whispers;
-    }
-
-    public void setWhispers(boolean whispers) {
-        this.whispers = whispers;
-    }
-
-    public boolean isOBT() {
-        return OBT;
-    }
-
-    public void setOBT(boolean OBT) {
-        this.OBT = OBT;
-    }
-
-    public boolean isWeekly() {
-        return weekly;
-    }
-
-    public void setWeekly(boolean weekly) {
-        this.weekly = weekly;
-    }
 }

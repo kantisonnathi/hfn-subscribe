@@ -6,38 +6,60 @@
 </head>
 <body>
 
+<div id="userEntry" >
+    <form th:object="${user}"
+          method="post">
+        <input type="text" id="name" th:field="*{name}" placeholder="Name"/>
+        <br>
+        <br>
+        <input type="email" id="email" th:field="*{email}" placeholder="Email">
+        <br>
+        <br>
+        <input type="text" id="sms_number" th:field="*{smsNumber}" placeholder="SMS Number">
+        <br>
+        <br>
+        <input type="text" id="whatsapp_number" th:field="*{whatsappNumber}" placeholder="Whatsapp Number">
+        <br>
+        <br>
 
-<p>Only enter your details if you are willing to receive notifications through them - if you do not wish to receive
-email notifications then please do not enter your email</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Mode</th>
+                <th>Email</th>
+                <th>Whatsapp</th>
+                <th>SMS</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Whispers from the brighter world</td>
+                <td><input type="checkbox" th:field="*{whispersEmail}"/></td>
+                <td><input type="checkbox" th:field="*{whispersWhatsapp}"/></td>
+                <td><input type="checkbox" th:field="*{whispersSMS}"/></td>
+            </tr>
+            <tr>
+                <td>One beautiful thought</td>
+                <td><input type="checkbox" th:field="*{OBTEmail}"></td>
+                <td><input type="checkbox" th:field="*{OBTWhatsapp}"></td>
+                <td><input type="checkbox" th:field="*{OBTSMS}"></td>
+            </tr>
+            <tr>
+                <td>Weekly Inpsiration</td>
+                <td><input type="checkbox" th:field="*{weeklyEmail}"></td>
+                <td><input type="checkbox" th:field="*{weeklyWhatsapp}"></td>
+                <td><input type="checkbox" th:field="*{weeklySMS}"></td>
+            </tr>
+            </tbody>
+        </table>
 
-<form th:object="${user}"
-      method="post">
-    <input type="text" id="name" th:field="*{name}" placeholder="Name"/>
-    <br>
-    <br>
-    <input type="email" id="email" th:field="*{email}" placeholder="Email">
-    <br>
-    <br>
-    <input type="text" id="sms_number" th:field="*{smsNumber}" placeholder="SMS Number">
-    <br>
-    <br>
-    <input type="text" id="whatsapp_number" th:field="*{whatsappNumber}" placeholder="Whatsapp Number">
-    <br>
-    <br>
-    <label for="whispers">Receive whispers from the brighter world</label>
-    <input type="checkbox" th:field="*{whispers}" id="whispers">
-    <br>
-    <label for="obt">Receive OBT</label>
-    <input type="checkbox" th:field="*{OBT}" id="obt">
-    <br>
-    <label for="weekly">Receive weekly inspiration</label>
-    <input type="checkbox" th:field="*{weekly}" id="weekly">
 
-    <br>
-    <br>
-    <input type="submit">
+        <br>
+        <br>
+        <input type="submit">
 
-</form>
+    </form>
+</div>
 
 </body>
 </html>
