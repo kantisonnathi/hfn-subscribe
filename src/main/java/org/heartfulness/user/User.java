@@ -1,12 +1,20 @@
 package org.heartfulness.user;
 
+import org.heartfulness.model.BaseEntity;
 import org.heartfulness.model.NamedEntity;
+import org.heartfulness.subscription.Subscription;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-public class User extends NamedEntity {
+public class User extends BaseEntity {
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "email")
     private String email;
@@ -17,107 +25,39 @@ public class User extends NamedEntity {
     @Column(name = "whatsapp_number")
     private String whatsappNumber;
 
-    @Column(name = "whispers_email")
-    private boolean whispersEmail;
-
-    @Column(name = "whispers_whatsapp")
-    private boolean whispersWhatsapp;
-
-    @Column(name = "whispers_sms")
-    private boolean whispersSMS;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private List<Subscription> subscriptions = new ArrayList<>();
 
 
-    @Column(name = "obt_email")
-    private boolean OBTEmail;
-
-    @Column(name = "obt_whatsapp")
-    private boolean OBTWhatsapp;
-
-    public boolean isWhispersEmail() {
-        return whispersEmail;
+    public void setSubscriptions(List subscriptions) {
+        this.subscriptions = subscriptions;
     }
 
-    public void setWhispersEmail(boolean whispersEmail) {
-        this.whispersEmail = whispersEmail;
+    public List<Subscription> getSubscriptions() {
+        return this.subscriptions;
     }
 
-    public boolean isWhispersWhatsapp() {
-        return whispersWhatsapp;
+
+    public void addSubscription(Subscription subscription) {
+        if (this.subscriptions == null) {
+            this.subscriptions = new ArrayList<>();
+        }
+        this.subscriptions.add(subscription);
+        subscription.setUser(this);
     }
 
-    public void setWhispersWhatsapp(boolean whispersWhatsapp) {
-        this.whispersWhatsapp = whispersWhatsapp;
+    public void removeSubscription(Subscription subscription) {
+        this.subscriptions.remove(subscription);
     }
 
-    public boolean isWhispersSMS() {
-        return whispersSMS;
+
+    public String getName() {
+        return name;
     }
 
-    public void setWhispersSMS(boolean whispersSMS) {
-        this.whispersSMS = whispersSMS;
+    public void setName(String name) {
+        this.name = name;
     }
-
-    public boolean isOBTEmail() {
-        return OBTEmail;
-    }
-
-    public void setOBTEmail(boolean OBTEmail) {
-        this.OBTEmail = OBTEmail;
-    }
-
-    public boolean isOBTWhatsapp() {
-        return OBTWhatsapp;
-    }
-
-    public void setOBTWhatsapp(boolean OBTWhatsapp) {
-        this.OBTWhatsapp = OBTWhatsapp;
-    }
-
-    public boolean isOBTSMS() {
-        return OBTSMS;
-    }
-
-    public void setOBTSMS(boolean OBTSMS) {
-        this.OBTSMS = OBTSMS;
-    }
-
-    public boolean isWeeklyEmail() {
-        return weeklyEmail;
-    }
-
-    public void setWeeklyEmail(boolean weeklyEmail) {
-        this.weeklyEmail = weeklyEmail;
-    }
-
-    public boolean isWeeklyWhatsapp() {
-        return weeklyWhatsapp;
-    }
-
-    public void setWeeklyWhatsapp(boolean weeklyWhatsapp) {
-        this.weeklyWhatsapp = weeklyWhatsapp;
-    }
-
-    public boolean isWeeklySMS() {
-        return weeklySMS;
-    }
-
-    public void setWeeklySMS(boolean weeklySMS) {
-        this.weeklySMS = weeklySMS;
-    }
-
-    @Column(name = "obt_sms")
-    private boolean OBTSMS;
-
-
-    @Column(name = "weekly_email")
-    private boolean weeklyEmail;
-
-    @Column(name = "weekly_whatsapp")
-    private boolean weeklyWhatsapp;
-
-    @Column(name = "weekly_sms")
-    private boolean weeklySMS;
-
 
     public String getEmail() {
         return email;

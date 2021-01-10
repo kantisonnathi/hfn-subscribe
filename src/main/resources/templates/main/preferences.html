@@ -6,27 +6,18 @@
 </head>
 <body>
 
+<p th:text="${user.name}"></p>
+
 <div id="userEntry" >
     <form th:object="${user}"
           method="post">
         <input type="hidden" id="id" name="id" th:value="*{id}">
-        <input type="text" id="name" th:field="*{name}" placeholder="Name"/>
-        <br>
-        <br>
-        <input type="email" id="email" th:field="*{email}" placeholder="Email">
-        <br>
-        <br>
-        <input type="text" id="sms_number" th:field="*{smsNumber}" placeholder="SMS Number">
-        <br>
-        <br>
-        <input type="text" id="whatsapp_number" th:field="*{whatsappNumber}" placeholder="Whatsapp Number">
-        <br>
-        <br>
+
 
         <table>
             <thead>
             <tr>
-                <th>Mode</th>
+                <th>Subscription</th>
                 <th>Email</th>
                 <th>Whatsapp</th>
                 <th>SMS</th>
@@ -35,8 +26,12 @@
             <tbody>
 
             <tr th:each="sub, itemStat : *{subscriptions}">
-                <td th:text="${sub.name}"><input type="hidden" th:text="${sub.id}"/></td>
-                <td><input type="checkbox" th:field="*{subscriptions[__${itemStat.index}__].email}" /></td>
+                <td th:text="*{subscriptions[__${itemStat.index}__].name}"><input type="hidden" th:field="*{subscriptions[__${itemStat.index}__].user?.id}"/></td>
+                <td>
+                    <input type="hidden" th:field="*{subscriptions[__${itemStat.index}__].name}"/>
+                    <input type="hidden" th:field="*{subscriptions[__${itemStat.index}__].user.id}"/>
+                    <input type="checkbox" th:field="*{subscriptions[__${itemStat.index}__].email}" />
+                </td>
                 <td><input type="checkbox" th:field="*{subscriptions[__${itemStat.index}__].whatsapp}" /></td>
                 <td><input type="checkbox" th:field="*{subscriptions[__${itemStat.index}__].sms}" /></td>
             </tr>

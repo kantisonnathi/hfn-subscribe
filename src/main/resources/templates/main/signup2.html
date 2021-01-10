@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe</title>
+</head>
+<body>
+
+<div id="userEntry" >
+    <form th:object="${user}"
+          method="post">
+        <input type="hidden" id="id" name="id" th:value="*{id}">
+        <input type="text" id="name" th:field="*{name}" placeholder="Name"/>
+        <br>
+        <br>
+        <input type="email" id="email" th:field="*{email}" placeholder="Email">
+        <br>
+        <br>
+        <input type="text" id="sms_number" th:field="*{smsNumber}" placeholder="SMS Number">
+        <br>
+        <br>
+        <input type="text" id="whatsapp_number" th:field="*{whatsappNumber}" placeholder="Whatsapp Number">
+        <input type="submit">
+
+    </form>
+</div>
+
+</body>
+</html>
